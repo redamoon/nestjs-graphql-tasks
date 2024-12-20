@@ -10,8 +10,8 @@ export class TaskResolver {
   constructor(private readonly taskService: TaskService) { }
   
   @Query(() => [TaskModel], { nullable: 'items' })  // GraphQL の形の形式
-  async getTasks(): Promise<Task[]> {
-    return this.taskService.getTasks();
+  async getTasks(@Args('userId', { type: ()=> Int }) userId: number): Promise<Task[]> {
+    return this.taskService.getTasks(userId);
   }
 
   @Mutation(() => TaskModel)
