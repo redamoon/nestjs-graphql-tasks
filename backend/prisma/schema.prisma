@@ -19,7 +19,7 @@ model Task {
   dueDate String @db.VarChar(10)
   status Status @default(NOT_STARTED)
   description String?
-  createAt DateTime @default(now()) @db.Timestamp(0)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
   userId Int
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -36,7 +36,7 @@ model User {
   name String @db.VarChar(255)
   email String @unique @db.VarChar(255)
   password String @db.VarChar(255)
-  createAt DateTime @default(now()) @db.Timestamp(0)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
   task Task[]
 }

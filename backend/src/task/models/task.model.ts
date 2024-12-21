@@ -19,7 +19,7 @@ export class Task {
   description: string;
 
   @Field()
-  createAt: Date;
+  createdAt: Date;
 
   @Field()
   updatedAt: Date;
