@@ -13,18 +13,18 @@ export const useAuth = () => {
     try {
       if (token) {
         const decodedToken = jwtDecode<Payload>(token)
-        if (decodedToken.exp * 1000 > Date.now()) {
+        if (decodedToken.exp * 1000 < Date.now()) {
           localStorage.removeItem('token');
           setAuthInfo({ checked: true, isAuthenticated: false });
         } else {
           setAuthInfo({ checked: true, isAuthenticated: true });
         }
       } else {
-        setAuthInfo({checked: true, isAuthenticated: false})
+        setAuthInfo({ checked: true, isAuthenticated: false })
       }
     } catch (error) {
       console.error(error);
-      setAuthInfo({checked: true, isAuthenticated: false})
+      setAuthInfo({ checked: true, isAuthenticated: false })
     }
   }, []);
 
